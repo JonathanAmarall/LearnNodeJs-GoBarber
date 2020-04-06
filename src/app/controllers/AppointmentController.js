@@ -85,6 +85,7 @@ class AppointmentController{
 
        return res.json(appointment);
     }
+
 ;}
 
 export default new AppointmentController();
