@@ -13,9 +13,9 @@ class AppointmentController{
         const { page = 1 } = req.query;
 
         const appoiment = await Appointment.findAll({
-            where : { user_id : req.userId,canceled_at: null },
+            where : { user_id : req.userId, canceled_at: null },
             order: ['date'],
-            attributes:['id', 'date'],
+            attributes:['id', 'date', 'past', 'cancellable'],
             limit: 20,
             offset: (page -1) * 20,
             include:[{
@@ -29,6 +29,7 @@ class AppointmentController{
                 }]
             }]
         });
+
         return res.json(appoiment);
     }
 
