@@ -8,28 +8,28 @@ import Appointment from '../app/models/Appointment';
 const models = [User, File, Appointment];
 
 class Database {
-    constructor()
-    {
+    constructor() {
         this.init();
         this.mongo();
     }
 
-    init()
-    {
+    init() {
         this.connection = new Sequelize(databaseConfig);
 
-        models.map(model => model.init(this.connection))
-        .map(model => model.associate && model.associate(this.connection.models));
+        models
+            .map((model) => model.init(this.connection))
+            .map(
+                (model) =>
+                    model.associate && model.associate(this.connection.models)
+            );
     }
 
-    mongo(){
-        this.mongoConnection = mongoose.connect(process.env.MONGO_URL,
-            {
-                useNewUrlParser: true,
-                useFindAndModify: true,
-                useUnifiedTopology: true
-            }
-        );
+    mongo() {
+        this.mongoConnection = mongoose.connect(process.env.MONGO_URL, {
+            useNewUrlParser: true,
+            useFindAndModify: true,
+            useUnifiedTopology: true,
+        });
     }
 }
 

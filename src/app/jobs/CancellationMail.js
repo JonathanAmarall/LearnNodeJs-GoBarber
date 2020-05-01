@@ -3,7 +3,7 @@ import pt from 'date-fns/locale/pt';
 import Mail from '../../lib/Mail';
 
 class CancellationEmail {
-    get key(){
+    get key() {
         return 'CancellationEmail';
     }
 
@@ -18,13 +18,14 @@ class CancellationEmail {
                 user: appointment.user.name,
                 date: format(
                     parseISO(appointment.date),
-                     "'dia' dd 'de' MMMM', às' H:mm'h'",
-                     {
-                         locale: pt
-                     })
-            }
+                    "'dia' dd 'de' MMMM', às' H:mm'h'",
+                    {
+                        locale: pt,
+                    }
+                ),
+            },
         });
     }
-};
+}
 
 export default new CancellationEmail();
